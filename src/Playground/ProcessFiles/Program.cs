@@ -1,12 +1,20 @@
-﻿using System;
-
-namespace ProcessFiles
+﻿namespace ProcessFiles
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args == null || args.Length == 0)
+            {
+                Console.Error.WriteLine("Please pass a path to process");
+                return;
+            }
+
+            string path = args[0];
+            FileProcessor fileProcessor = new FileProcessor();
+            fileProcessor.ProcessPackages(path);
         }
     }
 }
